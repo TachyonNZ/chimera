@@ -18,34 +18,48 @@ nontf = ["natural oddity","closet monster","freak of nature","synthetic being","
 synth = ["synthetic being","cybernetically enhanced being","organic robot"]
 magic = ["magic experiment","eldritch minor god","incarnated spirit","wizard's minion","reincarnated being","victim of a mischevious spirit",]
 
+''' Given a dictionary (choices) and zero or more keys to look under (cat),
+    returns randomly selected string from inside the dictionary. '''
+def choose(choices,*cat):
+    if cat:
+        ''' If at least one argument has been passed in addition to the
+            dictionary, we know that this isn't being called recursively.
+            So we can pull out the parts of the dictionary that we care
+            about and then grab a random choice from them. '''
+        processed = []
+        for s in cat:
+            processed += choices.get(s)
+        choice = random.choice(processed)
+    else:
+        ''' If not category arguments have been passed, we assume that
+            the dict is already in a processed form. So it's safe to just
+            randomly choose an item from it. '''
+        processed = list(choices.values())
+        if len(processed) is not 1:
+            raise Exception("Poorly formatted YAML, some results are impossible.")
+        choice = random.choice(processed[0])
 
-def choose(category,dict):
-    if category in dict:
-        choice = random.choice(dict.get(category))
-    else:
-        for k,v in dict.items():
-            choice = random.choice(v)
-			# This is a mess, but it's the only way I could find to
-			# grab the array out without knowing the name of the key.
-    if type(choice) is type({}) or type(choice) is type([]):
-		# this is also a horrible mess. Doing it the logical way
-		# 		if type(choice) is dict or type(choice) is array
-		# doesn't seem to work for some reason
-        return choose("",choice)
-    else:
+    ''' If the choice we've found is a dictionary or list, start
+        recursion to find a final value. If it's just a string we
+        assume that everything is fine and pass it back out. '''
+    if isinstance(choice, (dict, list)):
+        return choose(choice)
+    elif isinstance(choice, (str)):
         return choice
+    else:
+        raise Exception("Found an invalid object in dictionary structure!")
 
 def generateRobotParts():
     robocations = []
     robotype = []
-    robs = choose("fur_locations",raw_dict)
+    robs = choose(raw_dict,"fur_locations")
     for i in range(random.randrange(2,5)):
         while robs in robocations:
-            robs = choose("fur_locations",raw_dict)
+            robs = choose(raw_dict,"fur_locations")
         robocations.append(robs)
 
     for i in range(len(robocations)):
-        robotype.append(choose("robot_descriptors",raw_dict))
+        robotype.append(choose(raw_dict,"robot_descriptors"))
     if "entire body" in furLocations:
         robocations = ["entire body"]
     if "none" in robocations:
@@ -60,26 +74,26 @@ def nameGen(intelligence,gender,family):
     partTwo = ""
     global familyname
     if intelligence == "beast":
-        partOne = choose("beast_names",raw_dict)
-        partTwo = choose("beast_names_suffix",raw_dict)
+        partOne = choose(raw_dict,"beast_names")
+        partTwo = choose(raw_dict,"beast_names_suffix")
         final = partOne+partTwo
         final = final.lower()
         final = final.title()
     if intelligence == "hybrid":
         if gender == "female":
-            partOne = choose("human_names_female",raw_dict)
+            partOne = choose(raw_dict,"human_names_female")
         elif gender == "male":
-            partOne = choose("human_names_male",raw_dict)
-        partTwo = choose("beast_names_suffix",raw_dict)
+            partOne = choose(raw_dict,"human_names_male")
+        partTwo = choose(raw_dict,"beast_names_suffix")
         final = partOne+"'"+partTwo
         final = final.lower()
         final = final.title()
     if intelligence == "human":
         if gender == "female":
-            partOne = choose("human_names_female",raw_dict)
+            partOne = choose(raw_dict,"human_names_female")
         elif gender == "male":
-            partOne = choose("human_names_male",raw_dict)
-        partTwo = choose("human_last_names",raw_dict)
+            partOne = choose(raw_dict,"human_names_male")
+        partTwo = choose(raw_dict,"human_last_names")
         if family != "none":
             partTwo = family
         else:
@@ -88,11 +102,11 @@ def nameGen(intelligence,gender,family):
         final = final.lower()
         final = final.title()
     if intelligence == "supernatural":
-        partOne   = choose("super_first_names",raw_dict)
-        partTwo   = choose("super_mid_names",raw_dict)
-        partThree = choose("super_seperators",raw_dict)
-        partFour  = choose("super_last_prefix",raw_dict)
-        partFive  = choose("super_last_suffix",raw_dict)
+        partOne   = choose(raw_dict,"super_first_names")
+        partTwo   = choose(raw_dict,"super_mid_names")
+        partThree = choose(raw_dict,"super_seperators")
+        partFour  = choose(raw_dict,"super_last_prefix")
+        partFive  = choose(raw_dict,"super_last_suffix")
         if family != "none":
             partFour = family
             partFive = ""
@@ -125,7 +139,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             childrenNo = random.randint(0,4)
             children = []
             for i in range(childrenNo):
-                children.append(nameGen(intelligence,choose("sex",raw_dict),familyname))
+                children.append(nameGen(intelligence,choose(raw_dict,"sex"),familyname))
         else:
             family = "none"
     if intelligence == "hybrid" and transmission != "none" or origin in nontf:
@@ -141,7 +155,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             childrenNo = random.randint(0,3)
             children = []
             for i in range(childrenNo):
-                children.append(nameGen(intelligence,choose("sex",raw_dict),familyname))
+                children.append(nameGen(intelligence,choose(raw_dict,"sex"),familyname))
         else:
             family = "none"
 
@@ -157,7 +171,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             childrenNo = random.randint(0,2)
             children = []
             for i in range(childrenNo):
-                children.append(nameGen(intelligence,choose("sex",raw_dict),familyname))
+                children.append(nameGen(intelligence,choose(raw_dict,"sex"),familyname))
         else:
             family = "none"
     if intelligence == "supernatural" and transmission != "none" or origin in nontf:
@@ -172,7 +186,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             childrenNo = random.randint(0,1)
             children = []
             for i in range(childrenNo):
-                children.append(nameGen(intelligence,choose("sex",raw_dict),familyname))
+                children.append(nameGen(intelligence,choose(raw_dict,"sex"),familyname))
         else:
             family = "none"
     else:
@@ -187,56 +201,56 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
 
 def printOut(quantity):
 
-    intelligence = choose("anthroscale",raw_dict)
+    intelligence = choose(raw_dict,"anthroscale")
     disposition = ""
     for i in range(quantity):
-        part = choose("body_parts",raw_dict)
+        part = choose(raw_dict,"body_parts")
         while part in parts:
-            part = choose("body_parts",raw_dict)
+            part = choose(raw_dict,"body_parts")
         parts.append(part)
 
     for i in range(quantity+1):
-        animal = choose("animals",raw_dict)
+        animal = choose(raw_dict,"animals")
         while animal in animals:
-            animal = choose("animals",raw_dict)
+            animal = choose(raw_dict,"animals")
         animals.append(animal)
 
     if intelligence != "beast":
         for i in range(1):
-            animal = choose("animals",raw_dict)
+            animal = choose(raw_dict,"animals")
             animals.append(animal)
 
     for i in range(3):
 
 
         if intelligence == "beast":
-            act = choose("beast_activities",raw_dict)
+            act = choose(raw_dict,"beast_activities")
             while act in activities:
-                act = choose("beast_activities",raw_dict)
+                act = choose(raw_dict,"beast_activities")
             activities.append(act)
             averageAge = 8
-            disposition = choose("animal_dispositions",raw_dict)
+            disposition = choose(raw_dict,"animal_dispositions")
 
         elif intelligence == "hybrid":
-            act = choose("hybrid_activities",raw_dict)
+            act = choose(raw_dict,"hybrid_activities")
             while act in activities:
-                act = choose("hybrid_activities",raw_dict)
+                act = choose(raw_dict,"hybrid_activities")
             activities.append(act)
             averageAge = 15
-            disposition = choose("animal_dispositions",raw_dict)
+            disposition = choose(raw_dict,"animal_dispositions")
 
         elif intelligence == "human":
             if random.randint(0,1) == 0:
-                act = choose("human_activities_withdrawn",raw_dict)
+                act = choose(raw_dict,"human_activities_withdrawn")
                 while act in activities:
-                    act = choose("human_activities_withdrawn",raw_dict)
+                    act = choose(raw_dict,"human_activities_withdrawn")
                 activities.append(act)
                 averageAge = 30
                 disposition = "withdrawn"
             else:
-                act = choose("human_activities_uncaring",raw_dict)
+                act = choose(raw_dict,"human_activities_uncaring")
                 while act in activities:
-                    act = choose("human_activities_uncaring",raw_dict)
+                    act = choose(raw_dict,"human_activities_uncaring")
                 activities.append(act)
                 averageAge = 30
                 disposition = "friendly"
@@ -244,18 +258,18 @@ def printOut(quantity):
 
 
         elif intelligence == "supernatural":
-            act = choose("supernatural_activities",raw_dict)
+            act = choose(raw_dict,"supernatural_activities")
             while act in activities:
-                act = choose("supernatural_activities",raw_dict)
+                act = choose(raw_dict,"supernatural_activities")
             activities.append(act)
             averageAge = 120
             disposition = "changing"
 
     furLocations = []
-    furs = choose("fur_locations",raw_dict)
+    furs = choose(raw_dict,"fur_locations")
     for i in range(random.randrange(1,5)):
         while furs in furLocations:
-            furs = choose("fur_locations",raw_dict)
+            furs = choose(raw_dict,"fur_locations")
         furLocations.append(furs)
     if "none" in furLocations:
         furLocations = ["none"]
@@ -314,15 +328,15 @@ def printOut(quantity):
 
 
 
-    gender = choose("sex",raw_dict)
+    gender = choose(raw_dict,"sex")
 
-    origin = choose("origins",raw_dict)
-    originalAnimal = choose("animals+human",raw_dict)
-    fillerAnimal = choose("animals",raw_dict)
+    origin = choose(raw_dict,"origins")
+    originalAnimal = choose(raw_dict,"animals+human")
+    fillerAnimal = choose(raw_dict,"animals")
 
     name = nameGen(intelligence,gender,"none")
 
-    transmission = choose("transmission",raw_dict)
+    transmission = choose(raw_dict,"transmission")
 
     if lifeStage != "young":
         family = generateFamily(origin,intelligence,transmission,gender,familyname)
@@ -351,14 +365,14 @@ def printOut(quantity):
             robotstring = "You entire body is mechanised."
 
 
-    body_type = choose("body_type",raw_dict)
-    body_form = choose("body_form",raw_dict)
-    childPronoun = choose("family_beast",raw_dict)
+    body_type = choose(raw_dict,"body_type")
+    body_form = choose(raw_dict,"body_form")
+    childPronoun = choose(raw_dict,"family_beast")
     if intelligence == "beast" or intelligence == "hybrid":
-        emotion = choose("beast_emotions",raw_dict)
+        emotion = choose(raw_dict,"beast_emotions")
     else:
-        emotion = choose("emotions",raw_dict)
-    freq = choose("frequency",raw_dict)
+        emotion = choose(raw_dict,"emotions")
+    freq = choose(raw_dict,"frequency")
 
     joinstring = []
     try:
@@ -378,8 +392,8 @@ def printOut(quantity):
     print("You call yourself",name+", and are",gender+".")
     print("You have the",joinstring)
 
-    furDensity = choose("fur_density",raw_dict)
-    furAction = choose("fur_action",raw_dict)
+    furDensity = choose(raw_dict,"fur_density")
+    furAction = choose(raw_dict,"fur_action")
 
     if furLocations == ["none"]:
         joinstring = "You are entirely bare of fur."
@@ -404,21 +418,21 @@ def printOut(quantity):
 
     tfPain = False
     while tfPain == False:
-        tfPain = choose("transformation_pain",raw_dict)
-    tfTime = choose("time_scale",raw_dict)
+        tfPain = choose(raw_dict,"transformation_pain")
+    tfTime = choose(raw_dict,"time_scale")
     tfSpecific = False
     trigger = False
     mateOrigin = "finding a"
     if transmission == "biological":
-        tfSpecific = choose("bio_transmission",raw_dict)
-        mateOrigin = choose("mate_origins",raw_dict)
+        tfSpecific = choose(raw_dict,"bio_transmission")
+        mateOrigin = choose(raw_dict,"mate_origins")
     elif transmission == "magical":
-        tfSpecific = choose("magical_transmission",raw_dict)
-        mateOrigin = choose("mate_origins",raw_dict)
+        tfSpecific = choose(raw_dict,"magical_transmission")
+        mateOrigin = choose(raw_dict,"mate_origins")
     else:
-        tfSpecific = choose("bio_transmission"+"magical_transmission",raw_dict)
+        tfSpecific = choose(raw_dict,"bio_transmission","magical_transmission")
     if random.randrange(1,5) == 1:
-        trigger = choose("trigger",raw_dict)
+        trigger = choose(raw_dict,"trigger")
 
 
 
