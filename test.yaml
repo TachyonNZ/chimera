@@ -659,7 +659,7 @@ transformation_pain:
   - mild
   - mild
   - ignorable
-  - no
+  - "no"
   
 transformation_time:
   - permanent
