@@ -1,0 +1,712 @@
+body_parts:
+  - head:
+    - head
+    - face
+    - ears
+    - mouth:
+      - muzzle
+      - mouth
+    - nose
+    - teeth
+    - eyes
+    - tongue
+    - neck
+  - torso:
+    - torso
+  - arms:
+    - arms
+    - hands:
+      - nails:
+        - claws
+      - forepaws
+  - tail
+  - legs:
+    - legs
+    - feet:
+      - paws
+      - feet
+      
+body_type:
+  - thin
+  - lithe
+  - wiry
+  - muscular
+  - bulky
+  - fat
+      
+      
+    
+fur_locations:
+  - none
+  - entire body
+  - torso
+  - head
+  - neck
+  - shoulders
+  - arms
+  - legs
+  - hands
+  - feet
+  - head
+  - neck
+  - shoulders
+  - arms
+  - legs
+  - hands
+  - feet
+
+  
+fur_density:
+  - light dusting
+  - thin coat
+  - smooth coat
+  - rough coat
+  - wiry coat
+  - thick coat
+  - luxurious pelt
+  
+fur_action:
+  - that thins on
+  - everywhere but
+  - that's heaviest on
+  - that's lightest on
+  - which is long and wispy on
+  - which is short on
+      
+  
+animals:
+  - canid:
+    - fox:
+      - red fox
+      - grey fox
+      - fennec fox
+      - silver fox
+    - wolf
+    - dog:
+      - husky
+      - german shepherd
+      - malamute
+      - border collie
+  - feline:
+    - lion
+    - housecat:
+      - tabby cat
+      - calico
+      - sphinx
+    - tiger
+    - panther
+  - mustelid:
+    - ferret
+    - weasel
+    - stoat
+
+animals+human:
+  - canid:
+    - fox:
+      - red fox
+      - grey fox
+      - fennec fox
+      - silver fox
+    - wolf:
+      - maned wolf
+      - grey wolf
+      - dire wolf
+    - dog:
+      - husky
+      - german shepherd
+      - malamute
+      - border collie
+      - collie
+      - schnauzer
+      - greyhound
+  - feline:
+    - lion
+    - housecat:
+      - tabby cat
+      - calico
+      - sphinx
+    - tiger
+    - panther
+  - mustelid:
+    - ferret
+    - weasel
+    - stoat
+  - human
+  - human
+  - human
+  - human
+  - human
+  - human
+  - human
+  - human
+  
+anthroscale:
+# intelligence of a...
+  - supernatural
+  - human
+  - hybrid
+  - beast
+ 
+body_form:
+  - quadrupedal
+  - quadrupedal
+  - quadrupedal
+  - quadrupedal
+  - bipedal
+  - bipedal
+  - bipedal
+  - bipedal 
+  - tauric
+  
+sex:
+  - male
+  - female
+  
+  #TRIGGERED
+  
+lifespan:
+  - young
+  - teenaged
+  - adult
+  - middle-aged
+  - elderly
+  
+###################### MENTAL / ORIGINS
+  
+origins:
+#you are a...
+  - genetic experiment
+  - magic experiment
+  - eldritch minor god
+  - warped dimensional traveller
+  - natural oddity
+  - alien
+  - incarnated spirit
+  - wizard's minion
+  - spontaneous metamorphosis victim
+  - reincarnated being
+  - cybernetically enhanced being
+  - teleportation accident
+  - victim of a mischevious spirit
+  - freak of nature
+  - cruel joke by a more powerful being
+  - genie's idea of a wish for an 'better body'
+  - child's imaginary friend
+  - closet monster
+  - cursed being
+  - shapeshifter
+  - synthetic being
+  - organic robot
+#, originally a/n (animal).
+
+beast_emotions:
+# you feel
+  - enraged
+  - placid
+  - anxious
+  - hungry
+  - sly
+  - impatient
+  - volatile
+  - confused
+  - frenzied
+  - saddened
+  - coy
+  - affectionate
+  - protective
+  - lustful
+  - unstable
+  - blank
+  - fuzzy
+  - content
+  - surprised
+   
+emotions:
+# you feel
+  - filled with rage
+  - placid
+  - anxious
+  - hungry
+  - sly
+  - brash
+  - pissed off
+  - bored
+  - impatient
+  - like a damnable beast
+  - cheery
+  - unimpressed
+  - volatile
+  - confused
+  - panicked
+  - frenzied
+  - mundane
+  - saddened
+  - coy
+  - affectionate
+  - protective
+  - lustful
+  - unstable
+  - depressed
+  - angsty
+  - blank
+  - fuzzy
+  - content
+  - surprised
+  
+animal_dispositions:
+  - skittish
+  - bold
+  - vicious
+  - cold
+  - frisky
+  - nervous
+
+frequency:
+#...
+  - all of the time
+  - most of the time
+  - often
+  - sometimes
+  - occasionally
+
+#################### ACTIVITIES
+  
+beast_activities:
+# each day, you...
+  - hunt
+  - sharpen your claws
+  - eat
+  - sleep
+  - growl at birds
+  - roll in the dirt
+  - search for a mate
+  - scratch fleas
+  - hide from hunters
+  - dig holes
+  - terrorise civilians
+  - stretch your legs
+  - pick through carrion
+  - sniff scent markers
+  - mark territory
+
+human_activities_withdrawn:
+#each day you...
+  - hide from society
+  - meditate
+  - sleep
+  - miss your family
+  - search for knowledge
+  - scratch fleas
+  - succumb to instinct
+  - eat
+  - feel sorry for yourself
+  - terrorise civilians
+  - try to stay sane
+  - fight off animals
+  - convince yourself you're human
+  - search for a cure
+  
+hybrid_activities:
+# each day, you...
+  - hunt
+  - sharpen your claws
+  - eat
+  - sleep
+  - growl at birds
+  - roll in the dirt
+  - search for a mate
+  - scratch fleas
+  - hide from hunters
+  - dig holes
+  - terrorise civilians
+  - stretch your legs
+  - pick through carrion
+  - sniff scent markers
+  - mark territory
+  - hide from society
+  - meditate
+  - miss your family
+  - search for knowledge
+  - succumb to instinct
+  - feel sorry for yourself
+  - try to stay sane
+  - fight off animals
+  - convince yourself you're human
+  - search for a cure
+
+human_activities_uncaring:
+#each day you...
+  - talk with friends
+  - eat and drink
+  - stroll around
+  - glare at people wearing fur coats
+  - sleep
+  - scratch fleas
+  - try to stay relevant
+  - seek new abilites
+  - growl at passersby
+  - think about being a human
+  - search for someone crazy enough to like you
+
+supernatural_activities:
+#each day you...
+  - trick humans
+  - curse people
+  - stalk prey
+  - protect your master
+  - bully other chimera
+  - seek candidates for turning
+  - turn others into your kind
+  - cause mischief
+  - shapeshift
+  
+robot_descriptors:
+  - pneumatic
+  - "auto-"
+  - power
+  - hydraulic
+  - assisted
+  - drive
+  - fusion
+  - solar
+  - bionic
+  - cybernetic
+  - cyber
+  - melded
+  - protonic
+  - neutronic
+  
+  
+##################### NAME GEN
+
+beast_names:
+  - r
+  - rr
+  - br
+  - y
+  - b
+  - gr
+  - r
+  - mr
+  - m
+  - gw
+  
+beast_names_suffix:
+  - ip
+  - ap
+  - awr
+  - ow
+  - owl
+  - eo
+  - eow
+  - ork
+  - ark
+  - ar
+  
+#####
+
+human_names_male:
+  - Jon
+  - Michael
+  - Cal
+  - James
+  - Jackson
+  - Ellis
+  - Duncan
+  - Morgan
+  - Ken
+  - Adam
+  - Eric
+  - Walter
+  - Fletcher
+  - Jack
+  - Daniel
+  - Jimbo
+  - Sam
+  - Reuben
+  
+human_names_female:
+  - Joann
+  - Cathleen
+  - Kelsie
+  - Linda
+  - Lindsey
+  - Raven
+  - Erika
+  - Hailley
+  - Madeline
+  - Sal
+  - Marlene
+  - Carol
+  - Emma
+  - Nicky
+
+human_last_names:
+
+  - SMITH
+  - JOHNSON
+  - WILLIAMS
+  - BROWN
+  - JONES
+  - MILLER
+  - DAVIS
+  - GARCIA
+  - RODRIGUEZ
+  - WILSON
+  - MARTINEZ
+  - ANDERSON
+  - TAYLOR
+  - THOMAS
+  - HERNANDEZ
+  - MOORE
+  - MARTIN
+  - JACKSON
+  - THOMPSON
+  - WHITE
+  - LOPEZ
+  - LEE
+  - GONZALEZ
+  - HARRIS
+  - CLARK
+  - LEWIS
+  - ROBINSON
+  - WALKER
+  - PEREZ
+  - HALL
+  - YOUNG
+  - ALLEN
+  - SANCHEZ
+  - WRIGHT
+  - KING
+  
+super_first_names:
+  - Ral
+  - Tal
+  - Iri
+  - Nas
+  - Eru
+  - Dye
+  - Nal
+  - Sos
+  - Ori
+  - Vec
+  - Fex
+  - Pol
+  - Van
+  - Aur
+  - Fri
+  - Sox
+  - Opu
+ 
+super_mid_names:
+  - lent
+  - xox
+  - dia
+  - mel
+  - ram
+  - ic
+  - la
+  - xex
+  - es
+  - ova
+  - nes
+  - elia
+  - udio
+  - ce
+  - nge
+  - ""
+  - ""
+  - ""
+  - ""
+  
+super_seperators:
+  - "-"
+  - "'"
+  - "~"
+  - ""
+  - ""
+  - ""
+  
+super_last_prefix:
+  - Green
+  - Red
+  - Blue
+  - Black
+  - White
+  - Soul
+  - Shield
+  - Iron
+  - Grand
+  - Cold
+  - Burn
+  - Thorn
+
+super_last_suffix:
+  - heart
+  - lungs
+  - fist
+  - brawn
+  - beard
+  - fur
+  - paw
+  - veins
+  - bride
+  - brush
+  - tail
+  - maw
+  - secret
+  
+################## TF
+
+transmission:
+  - biological
+  - magical
+  - natural
+  - none
+
+bio_transmission:
+#You can turn others into your form by...
+  - scratch:
+    - scratching others with your claws.
+  - bite:
+    - biting them and transferring saliva.
+  - blood:
+    - blood-to-skin contact.
+    - blood-to-blood contact.
+  - lewdness:
+    - lewd pheremones that trigger a genetic response.
+    - lewd contact.
+  - tears:
+    - tear-to-skin contact.
+  - virus:
+    - spreading a virus that calls your body home.
+  - sweat:
+    - being around them while being physically active.
+    - sweat-to-skin contact.
+  - breath:
+    - breathing on them.
+  - parasite:
+    - spreading a parasite that calls your body home.
+  - fight:
+    - fighting them.
+    - maiming them.
+    - beating them in a fight.
+
+magical_transmission:
+#You're able to transform others into your form by...
+  - curse:
+    - placing a curse on them.
+    - having a deity place a curse on them.
+    - 'them "wishing" for it.'
+  - boon:
+    - placing a boon on them.
+    - having a deity boon them.
+    - them wishing for it.
+  - hypnosis:
+    - hypnotising them, which soon follows physically in its changes.
+  - warping:
+    - bending and reshaping their body.
+  - proximity:
+    - simply being around them.
+    - simply being around them.
+    - simply being around them.
+  - death:
+    - dying, your life-force being absorbed by them.
+  - emotional:
+    - feeling angry at them.
+    - feeling happy for them.
+    - falling in love with them.
+    - thinking about them deeply.
+    - arguing with them.
+    - surprising them.
+    - winning an argument against them.
+  - emotional_reciprocal:
+    - them being angry at you.
+    - them feeling happy towards you.
+    - them falling in love with you.
+    - them thinking deeply about you.
+    - them arguing with you.
+    - being surprised by them.
+    - them winning an argument with them.
+  - amulet:
+    - manipulating an amulet towards them.
+    - them touching an amulet.
+  - involuntary:
+    - "... well, sometimes it just happens."
+    
+time_scale:
+# The transformation takes...
+  - months to happen fully.
+  - weeks to happen fully.
+  - days to happen fully.
+  - the better part of an hour.
+  - half-an-hour, on average.
+  - ten minutes.
+  - one minute.
+  - thirty seconds.
+  - five seconds.
+  - one second.
+  - "no time at all -- it's instant."
+  
+transformation_pain:
+  - mind-rending
+  - disabling
+  - intense
+  - intense
+  - moderate
+  - moderate
+  - moderate
+  - mild
+  - mild
+  - ignorable
+  - no
+  
+transformation_time:
+  - permanent
+  - permanent
+  - permanent
+  - temporary
+  
+trigger:
+#You're not always in your chimeral form, only...
+  - when there is a full moon out.
+  - when you are around a particular person.
+  - when you willingly become it.
+  - if you say certain words.
+  - if you think about it.
+  - if you think about a certain person.
+  - at night.
+  - at day.
+  - "when you don't want to be."
+  - "when you're angry."
+  - "when you're sad."
+  - "when you're feeling romantic."
+  - "when you're being lewd."
+  - when you get drunk.
+  - "when you're sober."
+  - in early morning.
+  - for a random hour every day.
+  
+mate_origins:
+  - turning a human into your form, and convincing them to be your
+  - finding a
+  - finding a
+  - finding a
+  - accidentally turning a human into your form who then wanted to be your
+  - turning an animal into your form who then wanted to be your
+
+
+
+  
+########################## FAMILY
+
+family_beast:
+  - child:
+    - pup
+    - cub
+    - kit
+
+family_human:
+  - husband
+  - wife
+  - child
