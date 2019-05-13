@@ -69,39 +69,20 @@ def generateRobotParts():
 familyname = ""
 
 def nameGen(intelligence,gender,family):
-    final = ""
-    partOne = ""
-    partTwo = ""
     global familyname
-    if intelligence == "beast":
-        partOne = choose(raw_dict,"beast_names")
-        partTwo = choose(raw_dict,"beast_names_suffix")
-        final = partOne+partTwo
-        final = final.lower()
-        final = final.title()
-    if intelligence == "hybrid":
-        if gender == "female":
-            partOne = choose(raw_dict,"human_names_female")
-        elif gender == "male":
-            partOne = choose(raw_dict,"human_names_male")
-        partTwo = choose(raw_dict,"beast_names_suffix")
-        final = partOne+"'"+partTwo
-        final = final.lower()
-        final = final.title()
-    if intelligence == "human":
-        if gender == "female":
-            partOne = choose(raw_dict,"human_names_female")
-        elif gender == "male":
-            partOne = choose(raw_dict,"human_names_male")
-        partTwo = choose(raw_dict,"human_last_names")
-        if family != "none":
-            partTwo = family
-        else:
-            familyname = partTwo
-        final = partOne+" "+partTwo
-        final = final.lower()
-        final = final.title()
-    if intelligence == "supernatural":
+    if intelligence in ["beast","hybrid"]:
+        final = "{}'{}".format(
+            choose(raw_dict,intelligence+"_names_"+gender),
+            choose(raw_dict,intelligence+"_names_suffix")
+            ).lower().title()
+    elif intelligence == "human":
+        if family == "none":
+            familyname = choose(raw_dict,"human_last_names")
+        final = "{} {}".format(
+            choose(raw_dict,"human_names_"+gender),
+            familyname
+            ).lower().title()
+    elif intelligence == "supernatural":
         partOne   = choose(raw_dict,"super_first_names")
         partTwo   = choose(raw_dict,"super_mid_names")
         partThree = choose(raw_dict,"super_seperators")
@@ -116,7 +97,8 @@ def nameGen(intelligence,gender,family):
         final = partOne+partThree+partTwo+" "+partFour+partFive
         final = final.lower()
         final = final.title()
-
+    else:
+        raise Exception("Invalid intelligence descriptor: " + intelligence)
 
     return final
 
@@ -128,11 +110,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
     children = ""
     if intelligence == "beast" and transmission != "none" or origin in nontf:
         if random.randint(1,1) == 1 and "search for a mate" not in activities:
-
-            if gender == "male":
-                mate = nameGen(intelligence,"female",familyname)
-            elif gender == "female":
-                mate = nameGen(intelligence,"male",familyname)
+            mate = nameGen(intelligence,gender,familyname)
             mateOrigin = transmission
             #######
 
@@ -144,11 +122,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             family = "none"
     if intelligence == "hybrid" and transmission != "none" or origin in nontf:
         if random.randint(1,1) == 1 and "search for a mate" not in activities:
-
-            if gender == "male":
-                mate = nameGen(intelligence,"female",familyname)
-            elif gender == "female":
-                mate = nameGen(intelligence,"male",familyname)
+            mate = nameGen(intelligence,gender,familyname)
             mateOrigin = transmission
             #######
 
@@ -161,10 +135,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
 
     if intelligence == "human" and transmission != "none" or origin in nontf:
         if random.randint(1,1) == 1 and "search for someone crazy enough to like you" not in activities:
-            if gender == "male":
-                mate = nameGen(intelligence,"female",familyname)
-            elif gender == "female":
-                mate = nameGen(intelligence,"male",familyname)
+            mate = nameGen(intelligence,gender,familyname)
             mateOrigin = transmission
             #######
 
@@ -176,10 +147,7 @@ def generateFamily(origin,intelligence,transmission,gender,familyname):
             family = "none"
     if intelligence == "supernatural" and transmission != "none" or origin in nontf:
         if random.randint(1,1) == 1:
-            if gender == "male":
-                mate = nameGen(intelligence,"female",familyname)
-            elif gender == "female":
-                mate = nameGen(intelligence,"male",familyname)
+            mate = nameGen(intelligence,gender,familyname)
             mateOrigin = transmission
             #######
 

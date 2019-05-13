@@ -379,7 +379,7 @@ robot_descriptors:
   
 ##################### NAME GEN
 
-beast_names:
+beast_names_male: &beast_names_male
   - r
   - rr
   - br
@@ -391,7 +391,9 @@ beast_names:
   - m
   - gw
   
-beast_names_suffix:
+beast_names_female: *beast_names_male
+
+beast_names_suffix: &beast_names_suffix
   - ip
   - ap
   - awr
@@ -405,7 +407,7 @@ beast_names_suffix:
   
 #####
 
-human_names_male:
+human_names_male: &human_names_male
   - Jon
   - Michael
   - Cal
@@ -425,7 +427,7 @@ human_names_male:
   - Sam
   - Reuben
   
-human_names_female:
+human_names_female: &human_names_female
   - Joann
   - Cathleen
   - Kelsie
@@ -556,6 +558,12 @@ super_last_suffix:
   - maw
   - secret
   
+hybrid_names_male: *human_names_male
+
+hybrid_names_female: *human_names_female
+
+hybrid_names_suffix: *beast_names_suffix
+
 ################## TF
 
 transmission:
